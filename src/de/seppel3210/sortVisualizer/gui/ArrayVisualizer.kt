@@ -4,6 +4,7 @@ import java.awt.Canvas
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
+import kotlin.math.ceil
 
 class ArrayVisualizer(private val array: Array<Int>) : Canvas() {
     private val largestElement: Int
@@ -54,7 +55,7 @@ class ArrayVisualizer(private val array: Array<Int>) : Canvas() {
             g.fillRect(
                 (x * xScale).toInt(),
                 height - (y * yScale).toInt() + 1,
-                xScale.toInt() - xBarGap,
+                (ceil(xScale) - xBarGap).toInt(),
                 (y * yScale).toInt() - 1
             )
         }

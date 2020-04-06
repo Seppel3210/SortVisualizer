@@ -6,8 +6,8 @@ import java.awt.Dimension
 import java.awt.Graphics
 import kotlin.math.ceil
 
-class ArrayVisualizer(private val array: Array<Int>) : Canvas() {
-    private val largestElement: Int
+abstract class ArrayVisualizer(protected val array: Array<Int>) : Canvas() {
+    protected val largestElement: Int
 
     private val backgroundColor = Color.BLACK
 
@@ -39,25 +39,10 @@ class ArrayVisualizer(private val array: Array<Int>) : Canvas() {
         g.color = backgroundColor
         g.fillRect(0, 0, width, height)
 
-        barGraph(g)
+        drawArray(g)
 
         bufferStrategy.show()
     }
 
-    private fun barGraph(g: Graphics) {
-        val yScale = size.height / largestElement.toDouble()
-        val xScale = size.width / array.size.toDouble()
-        g.color = Color.WHITE
-
-        val xBarGap = if (array.size < 500) 1 else 0
-
-        array.withIndex().forEach { (x, y) ->
-            g.fillRect(
-                (x * xScale).toInt(),
-                height - (y * yScale).toInt() + 1,
-                (ceil(xScale) - xBarGap).toInt(),
-                (y * yScale).toInt() - 1
-            )
-        }
-    }
+    protected abstract fun drawArray(g: Graphics)
 }

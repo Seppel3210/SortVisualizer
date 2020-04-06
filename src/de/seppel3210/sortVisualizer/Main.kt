@@ -1,8 +1,9 @@
 package de.seppel3210.sortVisualizer
 
-import de.seppel3210.sortVisualizer.gui.ArrayVisualizer
+import de.seppel3210.sortVisualizer.gui.BarGraph
 import de.seppel3210.sortVisualizer.gui.Window
-import de.seppel3210.sortVisualizer.sorts.gnomeSort
+import de.seppel3210.sortVisualizer.sorts.GnomeSort
+import de.seppel3210.sortVisualizer.sorts.Sort
 import de.seppel3210.sortVisualizer.util.generateRandomArray
 
 //swaps per second
@@ -10,11 +11,12 @@ const val SWAP_PS = 10000.0
 //comparisons per second
 const val COMP_PS = 10000.0
 
+private val array = generateRandomArray(1000, 1000)
+val visualizer = BarGraph(array)
+val sort: Sort = GnomeSort
+
 fun main() {
     val window = Window("Sort Visualizer")
-
-    val array = generateRandomArray(1000, 1000)
-    val visualizer = ArrayVisualizer(array)
     window.add(visualizer)
 
     visualizer.init()
@@ -37,5 +39,5 @@ fun main() {
         }
     }.start()
 
-    gnomeSort(array)
+    sort.run(array)
 }

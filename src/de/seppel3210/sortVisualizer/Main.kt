@@ -5,6 +5,11 @@ import de.seppel3210.sortVisualizer.gui.Window
 import de.seppel3210.sortVisualizer.sorts.gnomeSort
 import de.seppel3210.sortVisualizer.util.generateRandomArray
 
+//swaps per second
+const val SWAP_PS = 10000.0
+//comparisons per second
+const val COMP_PS = 10000.0
+
 fun main() {
     val window = Window("Sort Visualizer")
 

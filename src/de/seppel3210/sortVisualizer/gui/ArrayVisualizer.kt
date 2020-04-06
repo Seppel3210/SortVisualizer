@@ -8,11 +8,12 @@ import kotlin.math.ceil
 
 abstract class ArrayVisualizer(protected val array: Array<Int>) : Canvas() {
     protected val largestElement: Int
+    var activeIndices: Array<Int> = arrayOf()
 
     private val backgroundColor = Color.BLACK
 
     init {
-        preferredSize = Dimension(1000, 800)
+        preferredSize = Dimension(1000, 700)
 
         var largestElement = array[0]
         array.forEach {

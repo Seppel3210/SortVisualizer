@@ -8,3 +8,5 @@ fun generateRandomArray(size: Int, bound: Int): Array<Int> {
         rnd.nextInt(bound) + 1
     }
 }
+
+fun generateSortedArray(size: Int) = Array(size) { it }
